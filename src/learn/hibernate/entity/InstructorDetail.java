@@ -1,6 +1,5 @@
 package learn.hibernate.entity;
 
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,24 +8,59 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "instructor")
+@Table(name = "instructor_detail")
 public class InstructorDetail {
 	
 	
-	@Id
-	@Column(name = "id")
+	//annotated the class as an entity and map to db table
+	
+	@Id //Annotate for pk
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id") //name column table
 	private int id;
 	
-	@Column(name = "first_name")
-	private String firstname;
+	@Column(name = "youtube_channel")
+	private String youtubeChannel;
 	
-	@Column(name = "last_name")
-	private String lastname;
+	@Column(name = "hobby")
+	private String hobby;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getYoutubeChannel() {
+		return youtubeChannel;
+	}
+
+	public void setYoutubeChannel(String youtubeChannel) {
+		this.youtubeChannel = youtubeChannel;
+	}
+
+	public String getHobby() {
+		return hobby;
+	}
+
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
+	}
+
+	@Override
+	public String toString() {
+		return "InstructorDetail [id=" + id + ", youtubeChannel=" + youtubeChannel + ", hobby=" + hobby + "]";
+	}
+
+	public InstructorDetail(String youtubeChannel, String hobby) {
+		super();
+		this.youtubeChannel = youtubeChannel;
+		this.hobby = hobby;
+	}
 	
-	@Column(name = "email")
-	private String email;
 	
-	
+	public InstructorDetail() {}
 
 }
