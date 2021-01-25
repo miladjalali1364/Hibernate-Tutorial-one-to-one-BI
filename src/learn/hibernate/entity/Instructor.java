@@ -85,9 +85,7 @@ public class Instructor {
 		this.email = email;
 	}
 	
-	public Instructor() {
-		
-	}
+	public Instructor() {}
 	
 
 }
