@@ -14,7 +14,7 @@ public class CreateDemo {
 		//create session factory
 		
 		SessionFactory factory = new Configuration()
-				                     .configure()
+				                     .configure("hibernate.cfg.xml")
 				                     .addAnnotatedClass(Instructor.class)
 				                     .addAnnotatedClass(InstructorDetail.class)
 				                     .buildSessionFactory();
@@ -26,7 +26,7 @@ public class CreateDemo {
 			
 			
 			Instructor tempInstructor = 
-					new Instructor("Madhu", "Patel", "madhu@luv2code.com");
+					new Instructor("Chad", "Darby", "darby@luv2code.com");
 			
 			
 			InstructorDetail tempInstructorDetail =
@@ -40,14 +40,16 @@ public class CreateDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			
+			//save the object
+			session.save(tempInstructor);
 			
 			//commit transaction
 			session.getTransaction().commit();
+			System.out.println("Done!");
 			
 			
 		} finally {
-			// TODO: handle finally clause
+			factory.close();
 		}
 		
 		
